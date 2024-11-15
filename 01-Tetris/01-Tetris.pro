@@ -45,3 +45,5 @@ CONFIG (release, debug|release)
     LIBS += /usr/lib/libsfml-window.so.2.6
     LIBS += /usr/lib/libsfml-window.so.2.6.1
 }
+
+RESOURCES +=
