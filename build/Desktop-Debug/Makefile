@@ -32,7 +32,8 @@ COMPRESS      = gzip -9f
 DISTNAME      = MiniGameLinuxQt1.0.0
 DISTDIR = /home/programmer/Documents/MiniGameLinuxQt/build/Desktop-Debug/.tmp/MiniGameLinuxQt1.0.0
 SUBTARGETS    =  \
-		sub-01-Tetris
+		sub-01-Tetris \
+		sub-12-MahjongSolitaire
 
 
 sub-01-Tetris-qmake_all:  FORCE
@@ -60,6 +61,31 @@ sub-01-Tetris-install_subtargets: FORCE
 sub-01-Tetris-uninstall_subtargets: FORCE
 	@test -d 01-Tetris/ || mkdir -p 01-Tetris/
 	cd 01-Tetris/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/programmer/Documents/MiniGameLinuxQt/01-Tetris/01-Tetris.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
+sub-12-MahjongSolitaire-qmake_all:  FORCE
+	@test -d 12-MahjongSolitaire/ || mkdir -p 12-MahjongSolitaire/
+	cd 12-MahjongSolitaire/ && $(QMAKE) -o Makefile /home/programmer/Documents/MiniGameLinuxQt/12-MahjongSolitaire/12-MahjongSolitaire.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
+	cd 12-MahjongSolitaire/ && $(MAKE) -f Makefile qmake_all
+sub-12-MahjongSolitaire: FORCE
+	@test -d 12-MahjongSolitaire/ || mkdir -p 12-MahjongSolitaire/
+	cd 12-MahjongSolitaire/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/programmer/Documents/MiniGameLinuxQt/12-MahjongSolitaire/12-MahjongSolitaire.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
+sub-12-MahjongSolitaire-make_first: FORCE
+	@test -d 12-MahjongSolitaire/ || mkdir -p 12-MahjongSolitaire/
+	cd 12-MahjongSolitaire/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/programmer/Documents/MiniGameLinuxQt/12-MahjongSolitaire/12-MahjongSolitaire.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
+sub-12-MahjongSolitaire-all: FORCE
+	@test -d 12-MahjongSolitaire/ || mkdir -p 12-MahjongSolitaire/
+	cd 12-MahjongSolitaire/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/programmer/Documents/MiniGameLinuxQt/12-MahjongSolitaire/12-MahjongSolitaire.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
+sub-12-MahjongSolitaire-clean: FORCE
+	@test -d 12-MahjongSolitaire/ || mkdir -p 12-MahjongSolitaire/
+	cd 12-MahjongSolitaire/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/programmer/Documents/MiniGameLinuxQt/12-MahjongSolitaire/12-MahjongSolitaire.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
+sub-12-MahjongSolitaire-distclean: FORCE
+	@test -d 12-MahjongSolitaire/ || mkdir -p 12-MahjongSolitaire/
+	cd 12-MahjongSolitaire/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/programmer/Documents/MiniGameLinuxQt/12-MahjongSolitaire/12-MahjongSolitaire.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
+sub-12-MahjongSolitaire-install_subtargets: FORCE
+	@test -d 12-MahjongSolitaire/ || mkdir -p 12-MahjongSolitaire/
+	cd 12-MahjongSolitaire/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/programmer/Documents/MiniGameLinuxQt/12-MahjongSolitaire/12-MahjongSolitaire.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
+sub-12-MahjongSolitaire-uninstall_subtargets: FORCE
+	@test -d 12-MahjongSolitaire/ || mkdir -p 12-MahjongSolitaire/
+	cd 12-MahjongSolitaire/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/programmer/Documents/MiniGameLinuxQt/12-MahjongSolitaire/12-MahjongSolitaire.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
 
 Makefile: ../../MiniGameLinuxQt.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/unix.conf \
@@ -187,26 +213,32 @@ Makefile: ../../MiniGameLinuxQt.pro /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-
 qmake: FORCE
 	@$(QMAKE) -o Makefile ../../MiniGameLinuxQt.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 
-qmake_all: sub-01-Tetris-qmake_all FORCE
+qmake_all: sub-01-Tetris-qmake_all sub-12-MahjongSolitaire-qmake_all FORCE
 
-make_first: sub-01-Tetris-make_first  FORCE
-all: sub-01-Tetris-all  FORCE
-clean: sub-01-Tetris-clean  FORCE
-distclean: sub-01-Tetris-distclean  FORCE
+make_first: sub-01-Tetris-make_first sub-12-MahjongSolitaire-make_first  FORCE
+all: sub-01-Tetris-all sub-12-MahjongSolitaire-all  FORCE
+clean: sub-01-Tetris-clean sub-12-MahjongSolitaire-clean  FORCE
+distclean: sub-01-Tetris-distclean sub-12-MahjongSolitaire-distclean  FORCE
 	-$(DEL_FILE) Makefile
 	-$(DEL_FILE) .qmake.stash
-install_subtargets: sub-01-Tetris-install_subtargets FORCE
-uninstall_subtargets: sub-01-Tetris-uninstall_subtargets FORCE
+install_subtargets: sub-01-Tetris-install_subtargets sub-12-MahjongSolitaire-install_subtargets FORCE
+uninstall_subtargets: sub-01-Tetris-uninstall_subtargets sub-12-MahjongSolitaire-uninstall_subtargets FORCE
 
 sub-01-Tetris-check:
 	@test -d 01-Tetris/ || mkdir -p 01-Tetris/
 	cd 01-Tetris/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/programmer/Documents/MiniGameLinuxQt/01-Tetris/01-Tetris.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
-check: sub-01-Tetris-check
+sub-12-MahjongSolitaire-check:
+	@test -d 12-MahjongSolitaire/ || mkdir -p 12-MahjongSolitaire/
+	cd 12-MahjongSolitaire/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/programmer/Documents/MiniGameLinuxQt/12-MahjongSolitaire/12-MahjongSolitaire.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
+check: sub-01-Tetris-check sub-12-MahjongSolitaire-check
 
 sub-01-Tetris-benchmark:
 	@test -d 01-Tetris/ || mkdir -p 01-Tetris/
 	cd 01-Tetris/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/programmer/Documents/MiniGameLinuxQt/01-Tetris/01-Tetris.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
-benchmark: sub-01-Tetris-benchmark
+sub-12-MahjongSolitaire-benchmark:
+	@test -d 12-MahjongSolitaire/ || mkdir -p 12-MahjongSolitaire/
+	cd 12-MahjongSolitaire/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/programmer/Documents/MiniGameLinuxQt/12-MahjongSolitaire/12-MahjongSolitaire.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
+benchmark: sub-01-Tetris-benchmark sub-12-MahjongSolitaire-benchmark
 install:install_subtargets  FORCE
 
 uninstall: uninstall_subtargets FORCE
@@ -218,11 +250,15 @@ FORCE:
 dist: distdir FORCE
 	(cd `dirname $(DISTDIR)` && $(TAR) $(DISTNAME).tar $(DISTNAME) && $(COMPRESS) $(DISTNAME).tar) && $(MOVE) `dirname $(DISTDIR)`/$(DISTNAME).tar.gz . && $(DEL_FILE) -r $(DISTDIR)
 
-distdir: sub-01-Tetris-distdir FORCE
+distdir: sub-01-Tetris-distdir sub-12-MahjongSolitaire-distdir FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_pre.prf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/unix.conf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/linux.conf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/sanitize.conf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/gcc-base.conf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/gcc-base-unix.conf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/g++-base.conf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/common/g++-unix.conf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/qconfig.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_concurrent.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_concurrent_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_core.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_core_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_dbus_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_devicediscovery_support_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_gbm_support_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfs_kms_support_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_eglfsdeviceintegration_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_example_icons_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_fb_support_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_gui_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_input_support_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_kms_support_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_network_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_opengl.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_opengl_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_openglwidgets.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_openglwidgets_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_printsupport.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_printsupport_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_sql.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_sql_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_testlib_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_widgets.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_widgets_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_xml.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/modules/qt_lib_xml_private.pri /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/qt_functions.prf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/qt_config.prf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/spec_post.prf .qmake.stash /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/exclusive_builds.prf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/toolchain.prf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/default_pre.prf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/resolve_config.prf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/default_post.prf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/qml_debug.prf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/warn_on.prf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/qmake_use.prf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/file_copies.prf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/testcase_targets.prf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/exceptions.prf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/yacc.prf /usr/lib/x86_64-linux-gnu/qt6/mkspecs/features/lex.prf ../../MiniGameLinuxQt.pro $(DISTDIR)/
 
 sub-01-Tetris-distdir: FORCE
 	@test -d 01-Tetris/ || mkdir -p 01-Tetris/
 	cd 01-Tetris/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/programmer/Documents/MiniGameLinuxQt/01-Tetris/01-Tetris.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/01-Tetris
+
+sub-12-MahjongSolitaire-distdir: FORCE
+	@test -d 12-MahjongSolitaire/ || mkdir -p 12-MahjongSolitaire/
+	cd 12-MahjongSolitaire/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/programmer/Documents/MiniGameLinuxQt/12-MahjongSolitaire/12-MahjongSolitaire.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/12-MahjongSolitaire
 
